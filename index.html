@@ -453,12 +453,12 @@
       programa.style.transition = 'opacity 2s ease-in';
       programa.style.opacity = '1';
 
-      // Eliminar el telón del DOM después de 2 segundos (para evitar interferencias)
+      // Eliminar el telón del DOM después de 3 segundos (para evitar interferencias)
       setTimeout(function() {
         curtain.remove();
-      }, 2000);
+      }, 3000);
 
-    }, 5000); // ← ¡Aquí está el cambio! El telón se mantiene 5 segundos (5000 ms) antes de empezar a abrirse.
+    }, 6000); // ← ¡Aquí está el cambio! El telón se mantiene 6 segundos (5000 ms) antes de empezar a abrirse.
   });
 </script>
 
