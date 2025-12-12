@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Concierto de Fin de Cursos 2025-2026 A</title>
+  <style>
+    :root {
+      --primary: #1a5276;
+      --light-bg: #fafcff;
+      --text: #212f3c;
+      --gray: #7f8c8d;
+    }
+    body {
+      font-family: 'Georgia', 'Cambria', 'Times New Roman', serif;
+      background-color: var(--light-bg);
+      color: var(--text);
+      margin: 0;
+      padding: 1.2rem;
+      line-height: 1.5;
+    }
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    /* Portada con imagen y cita */
+    .frontispiece {
+      text-align: center;
+      margin: 1.5rem 0;
+    }
+    .cover-art {
+      max-width: 100%;
+      height: auto;
+      max-height: 280px;
+      border-radius: 6px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      margin: 0 auto 1rem;
+    }
+    .epigraph {
+      font-size: 1.2rem;
+      font-style: italic;
+      margin: 0.8rem 0;
+      line-height: 1.5;
+    }
+    .epigraph footer {
+      display: block;
+      font-size: 1.05rem;
+      font-weight: bold;
+      margin-top: 0.5rem;
+      color: var(--primary);
+    }
+
+    /* Encabezado institucional */
+    .institution {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+    .institution h1 {
+      font-size: 1.6rem;
+      margin: 0.6rem 0;
+      color: var(--primary);
+    }
+    .institution h2 {
+      font-size: 1.3rem;
+      margin: 0.5rem 0;
+      color: #2874a6;
+    }
+    .institution p {
+      margin: 0.3rem 0;
+      font-size: 1.05rem;
+    }
+    .highlight {
+      background-color: #e3f2fd;
+      padding: 0.8rem;
+      border-radius: 6px;
+      margin: 1rem 0;
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: var(--primary);
+    }
+
+    /* Programa */
+    .program-title {
+      text-align: center;
+      font-size: 1.5rem;
+      margin: 1.8rem 0 1.2rem;
+      color: var(--primary);
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 0.4rem;
+    }
+    .mc {
+      text-align: center;
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      color: var(--gray);
+    }
+
+    .work {
+      margin-bottom: 1.8rem;
+      padding-left: 1.1rem;
+      border-left: 3px solid var(--primary);
+    }
+    .work-number {
+      font-size: 1.15rem;
+      font-weight: bold;
+      margin: 0 0 0.3rem;
+      color: var(--primary);
+    }
+    .work-title {
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin: 0 0 0.3rem;
+    }
+    .credit-line {
+      font-size: 0.95rem;
+      margin: 0.25rem 0;
+      color: var(--gray);
+    }
+    .composer, .arranger {
+      font-weight: bold;
+    }
+    .performers {
+      margin-top: 0.6rem;
+    }
+    .performer {
+      display: block;
+      margin-bottom: 0.35rem;
+      font-size: 0.95rem;
+    }
+    .performer .name {
+      font-weight: bold;
+    }
+    .performer .group {
+      background-color: #2980b9;
+      color: white;
+      font-size: 0.75rem;
+      padding: 0.1rem 0.35rem;
+      border-radius: 3px;
+      margin: 0 0.3rem;
+    }
+    .group-511 { background-color: #2980b9; }
+    .group-533 { background-color: #27ae60; }
+    .group-g600 { background-color: #8e44ad; }
+    .group-512 { background-color: #e67e22; }
+    .performer .instrument {
+      color: var(--gray);
+      font-style: italic;
+    }
+
+    /* Responsables */
+    .responsibles {
+      margin-top: 2.2rem;
+      padding-top: 1.2rem;
+      border-top: 1px dashed #bdc3c7;
+    }
+    .responsibles h3 {
+      color: var(--primary);
+      margin-bottom: 0.8rem;
+    }
+    .responsibles ul {
+      padding-left: 1.4rem;
+      margin: 0;
+      font-size: 0.95rem;
+    }
+    .responsibles li {
+      margin-bottom: 0.4rem;
+    }
+
+    .footer {
+      text-align: right;
+      font-size: 0.85rem;
+      margin-top: 2rem;
+      color: var(--gray);
+      font-style: italic;
+    }
+
+    @media (max-width: 520px) {
+      body { padding: 0.9rem; }
+      .institution h1 { font-size: 1.4rem; }
+      .program-title { font-size: 1.35rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Portada -->
+    <div class="frontispiece">
+      <img src="portada.jpg" alt="Obra: The Sunblind, Juan Gris (1914). Dominio público." class="cover-art">
+      <blockquote class="epigraph">
+        “La música es para el alma lo que la gimnasia para el cuerpo.”
+        <footer>— Platón</footer>
+      </blockquote>
+    </div>
+
+    <!-- Encabezado institucional -->
+    <div class="institution">
+      <h1>Instituto de Educación Media Superior de la Ciudad de México</h1>
+      <p><strong>Director General:</strong> Jorge Santos</p>
+
+      <h2>Plantel Iztapalapa 1</h2>
+      <p><strong>Encargada de la Subdirección de Coordinación:</strong> Liliana Ortega Gutiérrez</p>
+      <p><strong>JUD de Apoyo a Estudiantes y Docentes:</strong> Juan Carlos Méndez</p>
+      <p><strong>Academia de Música:</strong> Óscar Cárdenas, César Castellanos y Daniel Hernández</p>
+
+      <div class="highlight">
+        Martes 16 de diciembre de 2025<br>
+        10:00 h y 12:00 h — Salón de Música<br>
+        Cupo limitado
+      </div>
+    </div>
+
+    <!-- Programa -->
+    <div class="program-title">PROGRAMA DE FIN DE CURSOS 2025-2026 A</div>
+
+    <p class="mc"><strong>Maestro de Ceremonias:</strong> Isaac López Lorenzo</p>
+
+    <!-- 1. Composiciones -->
+    <div class="work">
+      <div class="work-number">1.</div>
+      <div class="work-title">Composiciones de los estudiantes de los cursos de Música 1 y Música 2</div>
+      <div class="credit-line">a) <span class="composer">“Contigo”</span> — Yoset Joel Camargo Hernández</div>
+      <div class="credit-line">b) <span class="composer">“Amistad”</span> — Abril Aimée Orozco Bautista</div>
+      <div class="credit-line">c) <span class="composer">“Desierto de Amor”</span> — Alondra Zarza Martínez</div>
+      <div class="credit-line">d) <span class="composer">“Unidos como Hilo Rojo”</span> — Fernanda Sofía Arredondo Muñiz</div>
+      <div class="credit-line">e) <span class="composer">“No Bastó”</span> — Valeria Muñoz Martínez</div>
+      <div class="credit-line">f) <span class="composer">“Capibaras”</span> — Karen Alexandra Rojas Ramírez</div>
+    </div>
+
+    <!-- 2. Love -->
+    <div class="work">
+      <div class="work-number">2.</div>
+      <div class="work-title">“Love”</div>
+      <div class="credit-line">Compositor: León Rubén Larregui Marín (Zoé)</div>
+      <div class="credit-line">Arreglo: <span class="arranger">Óscar Cárdenas</span></div>
+      <div class="performers">
+        <div class="performer"><span class="name">Cedric León Acosta Castillo</span> <span class="group group-533">533</span> <span class="instrument">— voz</span></div>
+        <div class="performer"><span class="name">Italivi Yamilé Fuentes Ramírez</span> <span class="group group-533">533</span> <span class="instrument">— batería</span></div>
+        <div class="performer"><span class="name">María Fernanda Gómez Montiel</span> <span class="group group-533">533</span> <span class="instrument">— teclado</span></div>
+        <div class="performer"><span class="name">Audrik Lozano Ortiz</span> <span class="group group-533">533</span> <span class="instrument">— voz</span></div>
+        <div class="performer"><span class="name">Patricio Osorio Perrusquia</span> <span class="group group-533">533</span> <span class="instrument">— teclado</span></div>
+        <div class="performer"><span class="name">Kelem Mariana Ramírez Parra</span> <span class="group group-533">533</span> <span class="instrument">— teclado</span></div>
+      </div>
+    </div>
+
+    <!-- 3. Eres -->
+    <div class="work">
+      <div class="work-number">3.</div>
+      <div class="work-title">“Eres”</div>
+      <div class="credit-line">Compositores: Emmanuel Del Real Díaz, Enrique Rangel Arroyo, Isaac Rubén Albarrán Ortega, José Alfredo Rangel Arroyo</div>
+      <div class="credit-line">Arreglo: <span class="arranger">Óscar Cárdenas</span></div>
+      <div class="performers">
+        <div class="performer"><span class="name">Abraham Acosta Martínez</span> <span class="group group-511">511</span> <span class="instrument">— guitarra</span></div>
+        <div class="performer"><span class="name">Diego Acosta Martínez</span> <span class="group group-511">511</span> <span class="instrument">— congas</span></div>
+        <div class="performer"><span class="name">Aiko Denef Azcárraga Méndez</span> <span class="group group-511">511</span> <span class="instrument">— voz</span></div>
+        <div class="performer"><span class="name">Yoset Joel Camargo Hernández</span> <span class="group group-511">511</span> <span class="instrument">— guitarra</span></div>
+        <div class="performer"><span class="name">Hanna Maomi Cariño Rosas</span> <span class="group group-511">511</span> <span class="instrument">— voz</span></div>
+        <div class="performer"><span class="name">Ruby Esmeralda García Benítez</span> <span class="group group-511">511</span> <span class="instrument">— metalófono</span></div>
+        <div class="performer"><span class="name">Iván Valentín González Santiago</span> <span class="group group-511">511</span> <span class="instrument">— guitarra</span></div>
+        <div class="performer"><span class="name">Lizbeth Marín Luna</span> <span class="group group-511">511</span> <span class="instrument">— voz</span></div>
+        <div class="performer"><span class="name">Gael Daniel Nepomuceno Romero</span> <span class="group group-511">511</span> <span class="instrument">— guitarra</span></div>
+        <div class="performer"><span class="name">Delia Monserrat Pacheco Vázquez</span> <span class="group group-511">511</span> <span class="instrument">— teclado</span></div>
+        <div class="performer"><span class="name">Andrea Roblero López</span> <span class="group group-511">511</span> <span class="instrument">— piano</span></div>
+        <div class="performer"><span class="name">Ilze Guadalupe Sánchez Barrera</span> <span class="group group-511">511</span> <span class="instrument">— batería</span></div>
+        <div class="performer"><span class="name">Lluvia Abigail Vázquez Rojas</span> <span class="group group-511">511</span> <span class="instrument">— clavinova</span></div>
+        <div class="performer"><span class="name">Wendy Velázquez Cerón</span> <span class="group group-511">511</span> <span class="instrument">— teclado</span></div>
+      </div>
+    </div>
+
+    <!-- 4. Disfruto -->
+    <div class="work">
+      <div class="work-number">4.</div>
+      <div class="work-title">“Disfruto”</div>
+      <div class="credit-line">Compositora: Carla Morrison</div>
+      <div class="credit-line">Arreglo: <span class="arranger">Óscar Cárdenas</span></div>
+      <div class="performers">
+        <div class="performer"><span class="name">Fernanda Sofía Arredondo Muñiz</span> <span class="group group-g600">G600</span> <span class="instrument">— voz</span></div>
+        <div class="performer"><span class="name">Evelyn Yulissa Arroyo Jiménez</span> <span class="group group-g600">G600</span> <span class="instrument">— xilófono</span></div>
+        <div class="performer"><span class="name">Xóchitl Michell Castillo Esquivel</span> <span class="group group-g600">G600</span> <span class="instrument">— xilófono</span></div>
+        <div class="performer"><span class="name">Luna Valentina Labna Esparza Mora</span> <span class="group group-g600">G600</span> <span class="instrument">— teclado</span></div>
+        <div class="performer"><span class="name">Julieta Aldara Hernández Chora</span> <span class="group group-g600">G600</span> <span class="instrument">— batería</span></div>
+        <div class="performer"><span class="name">Isaac López Lorenzo</span> <span class="group group-g600">G600</span> <span class="instrument">— metalófono</span></div>
+        <div class="performer"><span class="name">Dana Yesenia Martínez Aldana</span> <span class="group group-g600">G600</span> <span class="instrument">— clavinova</span></div>
+        <div class="performer"><span class="name">Miriam Jael Martínez Villegas</span> <span class="group group-g600">G600</span> <span class="instrument">— piano</span></div>
+        <div class="performer"><span class="name">Eduardo Morales Parra</span> <span class="group group-g600">G600</span> <span class="instrument">— teclado</span></div>
+        <div class="performer"><span class="name">Valeria Muñoz Martínez</span> <span class="group group-g600">G600</span> <span class="instrument">— voz</span></div>
+        <div class="performer"><span class="name">Abril Aimée Orozco Bautista</span> <span class="group group-g600">G600</span> <span class="instrument">— piano</span></div>
+        <div class="performer"><span class="name">Yoltzin Ariel Pérez Organista</span> <span class="group group-g600">G600</span> <span class="instrument">— guitarra</span></div>
+        <div class="performer"><span class="name">Ían Adrián Ramírez García</span> <span class="group group-g600">G600</span> <span class="instrument">— teclado</span></div>
+        <div class="performer"><span class="name">Karen Alexandra Rojas Ramírez</span> <span class="group group-g600">G600</span> <span class="instrument">— clavinova</span></div>
+        <div class="performer"><span class="name">Deyani Jaquelin Velázquez Torres</span> <span class="group group-g600">G600</span> <span class="instrument">— voz</span></div>
+        <div class="performer"><span class="name">Alondra Zarza Martínez</span> <span class="group group-g600">G600</span> <span class="instrument">— guitarra</span></div>
+      </div>
+    </div>
+
+    <!-- 5. Moliendo Café -->
+    <div class="work">
+      <div class="work-number">5.</div>
+      <div class="work-title">“Moliendo Café”</div>
+      <div class="credit-line">Compositor: Hugo Blanco</div>
+      <div class="credit-line">Arreglo: <span class="arranger">Daniel Hernández</span></div>
+      <div class="performers">
+        <div class="performer"><span class="name">Yuliana Lizeth Jacinto Arandas</span> <span class="group group-512">512</span> <span class="instrument">— xilófono</span></div>
+        <div class="performer"><span class="name">Martín Ulises Flores Pérez</span> <span class="group group-512">512</span> <span class="instrument">— xilófono</span></div>
+        <div class="performer"><span class="name">Natalia Carmona Hermenegildo</span> <span class="group group-512">512</span> <span class="instrument">— teclado</span></div>
+        <div class="performer"><span class="name">Edwin Eduardo Colula Hernández</span> <span class="group group-512">512</span> <span class="instrument">— guitarra</span></div>
+        <div class="performer"><span class="name">Rodrigo Gachuz Fabian</span> <span class="group group-512">512</span> <span class="instrument">— guitarra</span></div>
+        <div class="performer"><span class="name">Bryan Andrés Garcia Gutierrez</span> <span class="group group-512">512</span> <span class="instrument">— guitarra</span></div>
+        <div class="performer"><span class="name">José Alfredo López Aguilar</span> <span class="group group-512">512</span> <span class="instrument">— guitarra</span></div>
+        <div class="performer"><span class="name">Joana Lizeth López Vázquez</span> <span class="group group-512">512</span> <span class="instrument">— xilófono bajo</span></div>
+        <div class="performer"><span class="name">Luis Alberto Recio Olan</span> <span class="group group-512">512</span> <span class="instrument">— conga</span></div>
+        <div class="performer"><span class="name">Diego Guerrero Moreno</span> <span class="group group-512">512</span> <span class="instrument">— batería</span></div>
+      </div>
+    </div>
+
+    <!-- 6. Solas -->
+    <div class="work">
+      <div class="work-number">6.</div>
+      <div class="work-title">“Solas”</div>
+      <div class="credit-line">Compositora: Jamie Duffy</div>
+      <div class="credit-line">Arreglo: <span class="arranger">Daniel Hernández</span></div>
+      <div class="performers">
+        <div class="performer"><span class="name">Lizeth Arely Pérez Rojas</span> <span class="group group-512">512</span> <span class="instrument">— piano</span></div>
+      </div>
+    </div>
+
+    <!-- 7. Lovely -->
+    <div class="work">
+      <div class="work-number">7.</div>
+      <div class="work-title">“Lovely”</div>
+      <div class="credit-line">Compositores: Billie Eilish, Khalid Robinson</div>
+      <div class="credit-line">Arreglo: <span class="arranger">Daniel Hernández</span></div>
+      <div class="performers">
+        <div class="performer"><span class="name">Issa Catalina López Ramírez</span> <span class="group group-512">512</span> <span class="instrument">— kalimba</span></div>
+        <div class="performer"><span class="name">Ericka Mariana Aceves Marin</span> <span class="group group-512">512</span> <span class="instrument">— violín</span></div>
+        <div class="performer"><span class="name">Diana Díaz Vargas</span> <span class="group group-512">512</span> <span class="instrument">— flauta dulce contralto</span></div>
+        <div class="performer"><span class="name">Megan Hernández Ocampo</span> <span class="group group-512">512</span> <span class="instrument">— piano</span></div>
+        <div class="performer"><span class="name">Annette Itzel Ortega Barrera</span> <span class="group group-512">512</span> <span class="instrument">— teclado</span></div>
+        <div class="performer"><span class="name">Osiris Mayte Flores Hernández</span> <span class="group group-512">512</span> <span class="instrument">— guitarra</span></div>
+        <div class="performer"><span class="name">Irvin Ramos Cruz</span> <span class="group group-512">512</span> <span class="instrument">— guitarra</span></div>
+        <div class="performer"><span class="name">Sara Yamile Sánchez Contreras</span> <span class="group group-512">512</span> <span class="instrument">— metalófono</span></div>
+        <div class="performer"><span class="name">Abdiel Alejandro Ortega Barrera</span> <span class="group group-512">512</span> <span class="instrument">— batería</span></div>
+      </div>
+    </div>
+
+    <!-- Responsables -->
+    <div class="responsibles">
+      <h3>Responsables por grupo</h3>
+      <ul>
+        <li>Grupos 511, 533 y G600: DTI <strong>Óscar Cárdenas</strong></li>
+        <li>Grupo 512: DTI <strong>Daniel Hernández</strong></li>
+      </ul>
+    </div>
+
+    <div class="footer">
+      Programa digital — Concierto de Fin de Cursos<br>
+      Academia de Música, Plantel Iztapalapa I<br>
+      Diciembre de 2025
+    </div>
+
+  </div>
+</body>
+</html>
