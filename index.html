@@ -439,21 +439,28 @@
   </div>
 
   <script>
-    // Animación de telón que se abre al cargar la página
-    document.addEventListener('DOMContentLoaded', function() {
+  // Animación de telón que se abre al cargar la página
+  document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+      const curtain = document.getElementById('curtain');
+      const programa = document.getElementById('programa');
+
+      // Hacer que el telón se desvanezca lentamente
+      curtain.style.transition = 'opacity 2s ease-out';
+      curtain.style.opacity = '0';
+
+      // Mostrar el programa con una transición suave
+      programa.style.transition = 'opacity 2s ease-in';
+      programa.style.opacity = '1';
+
+      // Eliminar el telón del DOM después de 2 segundos (para evitar interferencias)
       setTimeout(function() {
-        const curtain = document.getElementById('curtain');
-        const programa = document.getElementById('programa');
+        curtain.remove();
+      }, 2000);
 
-        curtain.style.opacity = '0';
-        programa.style.opacity = '1';
-
-        setTimeout(function() {
-          curtain.remove();
-        }, 1000);
-      }, 1500);
-    });
-  </script>
+    }, 5000); // ← ¡Aquí está el cambio! El telón se mantiene 5 segundos (5000 ms) antes de empezar a abrirse.
+  });
+</script>
 
 </body>
 </html>
