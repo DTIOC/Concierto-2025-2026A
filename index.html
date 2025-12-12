@@ -16,19 +16,54 @@
       background-color: var(--light-bg);
       color: var(--text);
       margin: 0;
-      padding: 1.2rem;
+      padding: 0;
       line-height: 1.5;
-    }
-    .container {
-      max-width: 780px;
-      margin: 0 auto;
+      overflow-x: hidden;
     }
 
-    /* Portada con imagen y cita */
-    .frontispiece {
-      text-align: center;
-      margin: 1.5rem 0;
+    /* Animación de telón */
+    .curtain-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      background: #f9fcfe;
+      transition: opacity 1s ease-out;
     }
+
+    .curtain-left,
+    .curtain-right {
+      position: absolute;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(to right, #1a5276, #0d3b5e);
+      z-index: 10;
+      transition: transform 1.5s ease-out;
+    }
+
+    .curtain-left {
+      left: 0;
+      transform: translateX(-100%);
+    }
+
+    .curtain-right {
+      right: 0;
+      transform: translateX(100%);
+    }
+
+    .curtain-content {
+      text-align: center;
+      z-index: 5;
+      padding: 2rem;
+      max-width: 800px;
+    }
+
     .cover-art {
       max-width: 100%;
       height: auto;
@@ -37,18 +72,48 @@
       box-shadow: 0 3px 10px rgba(0,0,0,0.08);
       margin: 0 auto 1rem;
     }
+
     .epigraph {
       font-size: 1.2rem;
       font-style: italic;
       margin: 0.8rem 0;
       line-height: 1.5;
     }
+
     .epigraph footer {
       display: block;
       font-size: 1.05rem;
       font-weight: bold;
       margin-top: 0.5rem;
       color: var(--primary);
+    }
+
+    .art-credit {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--gray);
+      margin-top: 0.3rem;
+      font-style: italic;
+    }
+
+    /* Contenido principal (programa) */
+    .page-container {
+      padding: 2rem;
+      max-width: 100%;
+      margin: 0 auto;
+      background: white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      font-family: inherit;
+      line-height: 1.5;
+      color: var(--text);
+      opacity: 0;
+      transition: opacity 1s ease-in;
+      animation: fadeIn 1s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     /* Encabezado institucional */
@@ -114,9 +179,15 @@
       font-weight: bold;
       margin: 0 0 0.3rem;
     }
+    .work-group {
+      font-size: 1rem;
+      font-weight: bold;
+      color: var(--primary);
+      margin: 0 0 0.4rem;
+    }
     .credit-line {
       font-size: 0.95rem;
-      margin: 0.25rem 0;
+      margin: 0.2rem 0;
       color: var(--gray);
     }
     .composer, .arranger {
@@ -133,18 +204,6 @@
     .performer .name {
       font-weight: bold;
     }
-    .performer .group {
-      background-color: #2980b9;
-      color: white;
-      font-size: 0.75rem;
-      padding: 0.1rem 0.35rem;
-      border-radius: 3px;
-      margin: 0 0.3rem;
-    }
-    .group-511 { background-color: #2980b9; }
-    .group-533 { background-color: #27ae60; }
-    .group-g600 { background-color: #8e44ad; }
-    .group-512 { background-color: #e67e22; }
     .performer .instrument {
       color: var(--gray);
       font-style: italic;
@@ -178,26 +237,33 @@
     }
 
     @media (max-width: 520px) {
-      body { padding: 0.9rem; }
       .institution h1 { font-size: 1.4rem; }
       .program-title { font-size: 1.35rem; }
+      .curtain-content { padding: 1rem; }
+      .cover-art { max-height: 200px; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
 
-    <!-- Portada -->
-    <div class="frontispiece">
-  <img src="Portada.jpg" alt="Obra: Amistad, Aída Emart (2007). Uso académico con permiso." class="cover-art">
-  <p class="art-credit">
-    <small>Obra: <em>Amistad</em>, Aída Emart (2007). Uso académico con permiso.</small>
-  </p>
-  <blockquote class="epigraph">
-    “La música es para el alma lo que la gimnasia para el cuerpo.”
-    <footer>— Platón</footer>
-  </blockquote>
-</div>
+  <!-- Telón de apertura -->
+  <div class="curtain-container" id="curtain">
+    <div class="curtain-left"></div>
+    <div class="curtain-right"></div>
+    <div class="curtain-content">
+      <img src="Portada.jpg" alt="Obra: Amistad, Aída Emart (2007). Uso académico con permiso." class="cover-art">
+      <p class="art-credit">
+        <small>Obra: <em>Amistad</em>, Aída Emart (2007). Uso académico con permiso.</small>
+      </p>
+      <blockquote class="epigraph">
+        “La música es para el alma lo que la gimnasia para el cuerpo.”
+        <footer>— Platón</footer>
+      </blockquote>
+    </div>
+  </div>
+
+  <!-- Contenido principal -->
+  <div class="page-container" id="programa">
 
     <!-- Encabezado institucional -->
     <div class="institution">
@@ -237,15 +303,16 @@
     <div class="work">
       <div class="work-number">2.</div>
       <div class="work-title">“Love”</div>
+      <div class="work-group">Grupo 533</div>
       <div class="credit-line">Compositor: León Rubén Larregui Marín (Zoé)</div>
       <div class="credit-line">Arreglo: <span class="arranger">Óscar Cárdenas</span></div>
       <div class="performers">
-        <div class="performer"><span class="name">Cedric León Acosta Castillo</span> <span class="group group-533">533</span> <span class="instrument">— voz</span></div>
-        <div class="performer"><span class="name">Italivi Yamilé Fuentes Ramírez</span> <span class="group group-533">533</span> <span class="instrument">— batería</span></div>
-        <div class="performer"><span class="name">María Fernanda Gómez Montiel</span> <span class="group group-533">533</span> <span class="instrument">— teclado</span></div>
-        <div class="performer"><span class="name">Audrik Lozano Ortiz</span> <span class="group group-533">533</span> <span class="instrument">— voz</span></div>
-        <div class="performer"><span class="name">Patricio Osorio Perrusquia</span> <span class="group group-533">533</span> <span class="instrument">— teclado</span></div>
-        <div class="performer"><span class="name">Kelem Mariana Ramírez Parra</span> <span class="group group-533">533</span> <span class="instrument">— teclado</span></div>
+        <div class="performer"><span class="name">Cedric León Acosta Castillo</span> <span class="instrument">— voz</span></div>
+        <div class="performer"><span class="name">Italivi Yamilé Fuentes Ramírez</span> <span class="instrument">— batería</span></div>
+        <div class="performer"><span class="name">María Fernanda Gómez Montiel</span> <span class="instrument">— teclado</span></div>
+        <div class="performer"><span class="name">Audrik Lozano Ortiz</span> <span class="instrument">— voz</span></div>
+        <div class="performer"><span class="name">Patricio Osorio Perrusquia</span> <span class="instrument">— teclado</span></div>
+        <div class="performer"><span class="name">Kelem Mariana Ramírez Parra</span> <span class="instrument">— teclado</span></div>
       </div>
     </div>
 
@@ -253,23 +320,24 @@
     <div class="work">
       <div class="work-number">3.</div>
       <div class="work-title">“Eres”</div>
+      <div class="work-group">Grupo 511</div>
       <div class="credit-line">Compositores: Emmanuel Del Real Díaz, Enrique Rangel Arroyo, Isaac Rubén Albarrán Ortega, José Alfredo Rangel Arroyo</div>
       <div class="credit-line">Arreglo: <span class="arranger">Óscar Cárdenas</span></div>
       <div class="performers">
-        <div class="performer"><span class="name">Abraham Acosta Martínez</span> <span class="group group-511">511</span> <span class="instrument">— guitarra</span></div>
-        <div class="performer"><span class="name">Diego Acosta Martínez</span> <span class="group group-511">511</span> <span class="instrument">— congas</span></div>
-        <div class="performer"><span class="name">Aiko Denef Azcárraga Méndez</span> <span class="group group-511">511</span> <span class="instrument">— voz</span></div>
-        <div class="performer"><span class="name">Yoset Joel Camargo Hernández</span> <span class="group group-511">511</span> <span class="instrument">— guitarra</span></div>
-        <div class="performer"><span class="name">Hanna Maomi Cariño Rosas</span> <span class="group group-511">511</span> <span class="instrument">— voz</span></div>
-        <div class="performer"><span class="name">Ruby Esmeralda García Benítez</span> <span class="group group-511">511</span> <span class="instrument">— metalófono</span></div>
-        <div class="performer"><span class="name">Iván Valentín González Santiago</span> <span class="group group-511">511</span> <span class="instrument">— guitarra</span></div>
-        <div class="performer"><span class="name">Lizbeth Marín Luna</span> <span class="group group-511">511</span> <span class="instrument">— voz</span></div>
-        <div class="performer"><span class="name">Gael Daniel Nepomuceno Romero</span> <span class="group group-511">511</span> <span class="instrument">— guitarra</span></div>
-        <div class="performer"><span class="name">Delia Monserrat Pacheco Vázquez</span> <span class="group group-511">511</span> <span class="instrument">— teclado</span></div>
-        <div class="performer"><span class="name">Andrea Roblero López</span> <span class="group group-511">511</span> <span class="instrument">— piano</span></div>
-        <div class="performer"><span class="name">Ilze Guadalupe Sánchez Barrera</span> <span class="group group-511">511</span> <span class="instrument">— batería</span></div>
-        <div class="performer"><span class="name">Lluvia Abigail Vázquez Rojas</span> <span class="group group-511">511</span> <span class="instrument">— clavinova</span></div>
-        <div class="performer"><span class="name">Wendy Velázquez Cerón</span> <span class="group group-511">511</span> <span class="instrument">— teclado</span></div>
+        <div class="performer"><span class="name">Abraham Acosta Martínez</span> <span class="instrument">— guitarra</span></div>
+        <div class="performer"><span class="name">Diego Acosta Martínez</span> <span class="instrument">— congas</span></div>
+        <div class="performer"><span class="name">Aiko Denef Azcárraga Méndez</span> <span class="instrument">— voz</span></div>
+        <div class="performer"><span class="name">Yoset Joel Camargo Hernández</span> <span class="instrument">— guitarra</span></div>
+        <div class="performer"><span class="name">Hanna Maomi Cariño Rosas</span> <span class="instrument">— voz</span></div>
+        <div class="performer"><span class="name">Ruby Esmeralda García Benítez</span> <span class="instrument">— metalófono</span></div>
+        <div class="performer"><span class="name">Iván Valentín González Santiago</span> <span class="instrument">— guitarra</span></div>
+        <div class="performer"><span class="name">Lizbeth Marín Luna</span> <span class="instrument">— voz</span></div>
+        <div class="performer"><span class="name">Gael Daniel Nepomuceno Romero</span> <span class="instrument">— guitarra</span></div>
+        <div class="performer"><span class="name">Delia Monserrat Pacheco Vázquez</span> <span class="instrument">— teclado</span></div>
+        <div class="performer"><span class="name">Andrea Roblero López</span> <span class="instrument">— piano</span></div>
+        <div class="performer"><span class="name">Ilze Guadalupe Sánchez Barrera</span> <span class="instrument">— batería</span></div>
+        <div class="performer"><span class="name">Lluvia Abigail Vázquez Rojas</span> <span class="instrument">— clavinova</span></div>
+        <div class="performer"><span class="name">Wendy Velázquez Cerón</span> <span class="instrument">— teclado</span></div>
       </div>
     </div>
 
@@ -277,25 +345,26 @@
     <div class="work">
       <div class="work-number">4.</div>
       <div class="work-title">“Disfruto”</div>
+      <div class="work-group">Grupo G600</div>
       <div class="credit-line">Compositora: Carla Morrison</div>
       <div class="credit-line">Arreglo: <span class="arranger">Óscar Cárdenas</span></div>
       <div class="performers">
-        <div class="performer"><span class="name">Fernanda Sofía Arredondo Muñiz</span> <span class="group group-g600">G600</span> <span class="instrument">— voz</span></div>
-        <div class="performer"><span class="name">Evelyn Yulissa Arroyo Jiménez</span> <span class="group group-g600">G600</span> <span class="instrument">— xilófono</span></div>
-        <div class="performer"><span class="name">Xóchitl Michell Castillo Esquivel</span> <span class="group group-g600">G600</span> <span class="instrument">— xilófono</span></div>
-        <div class="performer"><span class="name">Luna Valentina Labna Esparza Mora</span> <span class="group group-g600">G600</span> <span class="instrument">— teclado</span></div>
-        <div class="performer"><span class="name">Julieta Aldara Hernández Chora</span> <span class="group group-g600">G600</span> <span class="instrument">— batería</span></div>
-        <div class="performer"><span class="name">Isaac López Lorenzo</span> <span class="group group-g600">G600</span> <span class="instrument">— metalófono</span></div>
-        <div class="performer"><span class="name">Dana Yesenia Martínez Aldana</span> <span class="group group-g600">G600</span> <span class="instrument">— clavinova</span></div>
-        <div class="performer"><span class="name">Miriam Jael Martínez Villegas</span> <span class="group group-g600">G600</span> <span class="instrument">— piano</span></div>
-        <div class="performer"><span class="name">Eduardo Morales Parra</span> <span class="group group-g600">G600</span> <span class="instrument">— teclado</span></div>
-        <div class="performer"><span class="name">Valeria Muñoz Martínez</span> <span class="group group-g600">G600</span> <span class="instrument">— voz</span></div>
-        <div class="performer"><span class="name">Abril Aimée Orozco Bautista</span> <span class="group group-g600">G600</span> <span class="instrument">— piano</span></div>
-        <div class="performer"><span class="name">Yoltzin Ariel Pérez Organista</span> <span class="group group-g600">G600</span> <span class="instrument">— guitarra</span></div>
-        <div class="performer"><span class="name">Ían Adrián Ramírez García</span> <span class="group group-g600">G600</span> <span class="instrument">— teclado</span></div>
-        <div class="performer"><span class="name">Karen Alexandra Rojas Ramírez</span> <span class="group group-g600">G600</span> <span class="instrument">— clavinova</span></div>
-        <div class="performer"><span class="name">Deyani Jaquelin Velázquez Torres</span> <span class="group group-g600">G600</span> <span class="instrument">— voz</span></div>
-        <div class="performer"><span class="name">Alondra Zarza Martínez</span> <span class="group group-g600">G600</span> <span class="instrument">— guitarra</span></div>
+        <div class="performer"><span class="name">Fernanda Sofía Arredondo Muñiz</span> <span class="instrument">— voz</span></div>
+        <div class="performer"><span class="name">Evelyn Yulissa Arroyo Jiménez</span> <span class="instrument">— xilófono</span></div>
+        <div class="performer"><span class="name">Xóchitl Michell Castillo Esquivel</span> <span class="instrument">— xilófono</span></div>
+        <div class="performer"><span class="name">Luna Valentina Labna Esparza Mora</span> <span class="instrument">— teclado</span></div>
+        <div class="performer"><span class="name">Julieta Aldara Hernández Chora</span> <span class="instrument">— batería</span></div>
+        <div class="performer"><span class="name">Isaac López Lorenzo</span> <span class="instrument">— metalófono</span></div>
+        <div class="performer"><span class="name">Dana Yesenia Martínez Aldana</span> <span class="instrument">— clavinova</span></div>
+        <div class="performer"><span class="name">Miriam Jael Martínez Villegas</span> <span class="instrument">— piano</span></div>
+        <div class="performer"><span class="name">Eduardo Morales Parra</span> <span class="instrument">— teclado</span></div>
+        <div class="performer"><span class="name">Valeria Muñoz Martínez</span> <span class="instrument">— voz</span></div>
+        <div class="performer"><span class="name">Abril Aimée Orozco Bautista</span> <span class="instrument">— piano</span></div>
+        <div class="performer"><span class="name">Yoltzin Ariel Pérez Organista</span> <span class="instrument">— guitarra</span></div>
+        <div class="performer"><span class="name">Ían Adrián Ramírez García</span> <span class="instrument">— teclado</span></div>
+        <div class="performer"><span class="name">Karen Alexandra Rojas Ramírez</span> <span class="instrument">— clavinova</span></div>
+        <div class="performer"><span class="name">Deyani Jaquelin Velázquez Torres</span> <span class="instrument">— voz</span></div>
+        <div class="performer"><span class="name">Alondra Zarza Martínez</span> <span class="instrument">— guitarra</span></div>
       </div>
     </div>
 
@@ -303,19 +372,20 @@
     <div class="work">
       <div class="work-number">5.</div>
       <div class="work-title">“Moliendo Café”</div>
+      <div class="work-group">Grupo 512</div>
       <div class="credit-line">Compositor: Hugo Blanco</div>
       <div class="credit-line">Arreglo: <span class="arranger">Daniel Hernández</span></div>
       <div class="performers">
-        <div class="performer"><span class="name">Yuliana Lizeth Jacinto Arandas</span> <span class="group group-512">512</span> <span class="instrument">— xilófono</span></div>
-        <div class="performer"><span class="name">Martín Ulises Flores Pérez</span> <span class="group group-512">512</span> <span class="instrument">— xilófono</span></div>
-        <div class="performer"><span class="name">Natalia Carmona Hermenegildo</span> <span class="group group-512">512</span> <span class="instrument">— teclado</span></div>
-        <div class="performer"><span class="name">Edwin Eduardo Colula Hernández</span> <span class="group group-512">512</span> <span class="instrument">— guitarra</span></div>
-        <div class="performer"><span class="name">Rodrigo Gachuz Fabian</span> <span class="group group-512">512</span> <span class="instrument">— guitarra</span></div>
-        <div class="performer"><span class="name">Bryan Andrés Garcia Gutierrez</span> <span class="group group-512">512</span> <span class="instrument">— guitarra</span></div>
-        <div class="performer"><span class="name">José Alfredo López Aguilar</span> <span class="group group-512">512</span> <span class="instrument">— guitarra</span></div>
-        <div class="performer"><span class="name">Joana Lizeth López Vázquez</span> <span class="group group-512">512</span> <span class="instrument">— xilófono bajo</span></div>
-        <div class="performer"><span class="name">Luis Alberto Recio Olan</span> <span class="group group-512">512</span> <span class="instrument">— conga</span></div>
-        <div class="performer"><span class="name">Diego Guerrero Moreno</span> <span class="group group-512">512</span> <span class="instrument">— batería</span></div>
+        <div class="performer"><span class="name">Yuliana Lizeth Jacinto Arandas</span> <span class="instrument">— xilófono</span></div>
+        <div class="performer"><span class="name">Martín Ulises Flores Pérez</span> <span class="instrument">— xilófono</span></div>
+        <div class="performer"><span class="name">Natalia Carmona Hermenegildo</span> <span class="instrument">— teclado</span></div>
+        <div class="performer"><span class="name">Edwin Eduardo Colula Hernández</span> <span class="instrument">— guitarra</span></div>
+        <div class="performer"><span class="name">Rodrigo Gachuz Fabian</span> <span class="instrument">— guitarra</span></div>
+        <div class="performer"><span class="name">Bryan Andrés Garcia Gutierrez</span> <span class="instrument">— guitarra</span></div>
+        <div class="performer"><span class="name">José Alfredo López Aguilar</span> <span class="instrument">— guitarra</span></div>
+        <div class="performer"><span class="name">Joana Lizeth López Vázquez</span> <span class="instrument">— xilófono bajo</span></div>
+        <div class="performer"><span class="name">Luis Alberto Recio Olan</span> <span class="instrument">— conga</span></div>
+        <div class="performer"><span class="name">Diego Guerrero Moreno</span> <span class="instrument">— batería</span></div>
       </div>
     </div>
 
@@ -323,10 +393,11 @@
     <div class="work">
       <div class="work-number">6.</div>
       <div class="work-title">“Solas”</div>
+      <div class="work-group">Grupo 512</div>
       <div class="credit-line">Compositora: Jamie Duffy</div>
       <div class="credit-line">Arreglo: <span class="arranger">Daniel Hernández</span></div>
       <div class="performers">
-        <div class="performer"><span class="name">Lizeth Arely Pérez Rojas</span> <span class="group group-512">512</span> <span class="instrument">— piano</span></div>
+        <div class="performer"><span class="name">Lizeth Arely Pérez Rojas</span> <span class="instrument">— piano</span></div>
       </div>
     </div>
 
@@ -334,18 +405,19 @@
     <div class="work">
       <div class="work-number">7.</div>
       <div class="work-title">“Lovely”</div>
+      <div class="work-group">Grupo 512</div>
       <div class="credit-line">Compositores: Billie Eilish, Khalid Robinson</div>
       <div class="credit-line">Arreglo: <span class="arranger">Daniel Hernández</span></div>
       <div class="performers">
-        <div class="performer"><span class="name">Issa Catalina López Ramírez</span> <span class="group group-512">512</span> <span class="instrument">— kalimba</span></div>
-        <div class="performer"><span class="name">Ericka Mariana Aceves Marin</span> <span class="group group-512">512</span> <span class="instrument">— violín</span></div>
-        <div class="performer"><span class="name">Diana Díaz Vargas</span> <span class="group group-512">512</span> <span class="instrument">— flauta dulce contralto</span></div>
-        <div class="performer"><span class="name">Megan Hernández Ocampo</span> <span class="group group-512">512</span> <span class="instrument">— piano</span></div>
-        <div class="performer"><span class="name">Annette Itzel Ortega Barrera</span> <span class="group group-512">512</span> <span class="instrument">— teclado</span></div>
-        <div class="performer"><span class="name">Osiris Mayte Flores Hernández</span> <span class="group group-512">512</span> <span class="instrument">— guitarra</span></div>
-        <div class="performer"><span class="name">Irvin Ramos Cruz</span> <span class="group group-512">512</span> <span class="instrument">— guitarra</span></div>
-        <div class="performer"><span class="name">Sara Yamile Sánchez Contreras</span> <span class="group group-512">512</span> <span class="instrument">— metalófono</span></div>
-        <div class="performer"><span class="name">Abdiel Alejandro Ortega Barrera</span> <span class="group group-512">512</span> <span class="instrument">— batería</span></div>
+        <div class="performer"><span class="name">Issa Catalina López Ramírez</span> <span class="instrument">— kalimba</span></div>
+        <div class="performer"><span class="name">Ericka Mariana Aceves Marin</span> <span class="instrument">— violín</span></div>
+        <div class="performer"><span class="name">Diana Díaz Vargas</span> <span class="instrument">— flauta dulce contralto</span></div>
+        <div class="performer"><span class="name">Megan Hernández Ocampo</span> <span class="instrument">— piano</span></div>
+        <div class="performer"><span class="name">Annette Itzel Ortega Barrera</span> <span class="instrument">— teclado</span></div>
+        <div class="performer"><span class="name">Osiris Mayte Flores Hernández</span> <span class="instrument">— guitarra</span></div>
+        <div class="performer"><span class="name">Irvin Ramos Cruz</span> <span class="instrument">— guitarra</span></div>
+        <div class="performer"><span class="name">Sara Yamile Sánchez Contreras</span> <span class="instrument">— metalófono</span></div>
+        <div class="performer"><span class="name">Abdiel Alejandro Ortega Barrera</span> <span class="instrument">— batería</span></div>
       </div>
     </div>
 
@@ -365,5 +437,23 @@
     </div>
 
   </div>
+
+  <script>
+    // Animación de telón que se abre al cargar la página
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(function() {
+        const curtain = document.getElementById('curtain');
+        const programa = document.getElementById('programa');
+
+        curtain.style.opacity = '0';
+        programa.style.opacity = '1';
+
+        setTimeout(function() {
+          curtain.remove();
+        }, 1000);
+      }, 1500);
+    });
+  </script>
+
 </body>
 </html>
